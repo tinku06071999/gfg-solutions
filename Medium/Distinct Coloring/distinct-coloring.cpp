@@ -11,7 +11,7 @@ class Solution{
 public:
     long long int distinctColoring(int N, int r[], int g[], int b[]){
         // code here 
-         long long int dp[N+1][3];
+        long long int dp[N+1][3];
         
     dp[0][0] = r[0];    
     dp[0][1] = g[0];    
