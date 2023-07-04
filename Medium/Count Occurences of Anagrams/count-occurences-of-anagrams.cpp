@@ -40,35 +40,6 @@ public:
 	    }
 	}
 	    return ans;
-        // int w=pat.size();
-        // unordered_map<char,int> mp;
-        // for(int i=0;i<w;i++)mp[pat[i]]++;
-        // int count=mp.size();
-        // int ans=0;
-        // int n=txt.size();
-        // int i=0;
-        // int j=0;
-        // while(j<n)
-        // {
-        //     if(mp.count(txt[j]))
-        //     {
-        //         mp[txt[j]]--;
-        //         if(mp[txt[j]]==0)count--;
-        //     }
-        //     if(j-i+1<w)j++;
-        //     else if(j-i+1==w)
-        //     {
-        //         if(count==0)ans++;
-        //         if(mp.count(txt[i]))
-        //         {
-        //             mp[txt[i]]++;
-        //             if(mp[txt[i]]==1)count++;
-        //         }
-        //         i++;
-        //         j++;
-        //     }
-        // }
-        // return ans;
 	}
 
 };
