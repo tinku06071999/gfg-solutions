@@ -39,14 +39,15 @@ struct Node
 // Should return  right view of tree
 class Solution
 {
-    public:
-    //Function to return list containing elements of right view of binary tree.
-    void solve(vector<int>&v,Node *root, int level){
-        if(root == nullptr)return;
-        if(level==v.size())v.push_back(root->data);
+    private: 
+    void solve(vector<int>&v,Node* root, int level){
+        if(root==nullptr)return;
+        if(v.size()==level)v.push_back(root->data);
         solve(v,root->right,level+1);
         solve(v,root->left,level+1);
     }
+    public:
+    //Function to return list containing elements of right view of binary tree.
     vector<int> rightView(Node *root)
     {
        // Your Code here
