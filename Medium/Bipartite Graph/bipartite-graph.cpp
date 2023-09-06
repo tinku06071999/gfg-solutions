@@ -24,12 +24,23 @@ public:
 	    }
 	    return true;
     }
+
+bool dfs(int sr, int col,vector<int>adj[],vector<int> &vis){
+    vis[sr] = col;
+    for(auto it : adj[sr]){
+        if(vis[it] == -1){
+            if(!dfs(it,!col,adj,vis))return false;
+        }
+        else if(vis[it] == vis[sr])return false;
+    }
+    return true;
+}
 	bool isBipartite(int V, vector<int>adj[]){
 	    // Code here
 	    vector<int>vis(V,-1);
 	   for(int i=0;i<V;i++){
 	       if(vis[i] == -1)
-	         if(solve(i,adj,vis) == 0) return false;
+	         if(dfs(i,0,adj,vis) == 0) return false;
 	  }
 	     return true;
 	}
