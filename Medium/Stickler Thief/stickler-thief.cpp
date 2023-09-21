@@ -8,21 +8,19 @@ class Solution
 {
     public:
     //Function to find the maximum money the thief can get.
-    int solve(int n,int arr[],vector<int>&dp){
-        dp[0]=arr[0];
-        for(int i=1;i<n;i++){
-            int pick = arr[i];
-            if(i>1)pick+=dp[i-2];
-            int notPick = 0+dp[i-1];
-            dp[i] = max(pick,notPick);
-        }
-        return dp[n-1];
+    int solve(int arr[], int idx,vector<int>&dp){
+        if(idx<0)return 0;
+        if(idx==0)return arr[0];
+        if(dp[idx] != -1)return dp[idx];
+        int pick = arr[idx]+solve(arr,idx-2,dp);
+        int not_pick  = solve(arr,idx-1,dp);
+        return dp[idx]=max(pick,not_pick);
     }
     int FindMaxSum(int arr[], int n)
     {
         // Your code here
         vector<int>dp(n,-1);
-        return solve(n,arr,dp);
+        return solve(arr,n-1,dp);
     }
 };
 
