@@ -58,19 +58,36 @@ class Solution{
     
     Node* mergeSort(Node* head) {
         // your code here
-        if(head == nullptr||head->next == nullptr)return head;
-        Node* slow = head;
-        Node* fast = head;
-        Node* temp = nullptr;
-        while(fast && fast->next){
-            temp = slow;
-            slow = slow->next;
-            fast = fast->next->next;
+        
+        // first method using bubble sort
+        
+        Node* curr = head;
+        while(curr){
+            Node* temp = curr->next;
+            while(temp){
+                if(curr->data > temp->data){
+                    swap(curr->data, temp->data);
+                }temp = temp->next;
+            }
+            curr = curr->next;
         }
-        temp->next = nullptr;
-        Node* l1 = mergeSort(head);
-        Node* l2 = mergeSort(slow);
-        return mergelist(l1,l2);
+        
+        return head;
+        // using merge sort
+        
+        // if(head == nullptr||head->next == nullptr)return head;
+        // Node* slow = head;
+        // Node* fast = head;
+        // Node* temp = nullptr;
+        // while(fast && fast->next){
+        //     temp = slow;
+        //     slow = slow->next;
+        //     fast = fast->next->next;
+        // }
+        // temp->next = nullptr;
+        // Node* l1 = mergeSort(head);
+        // Node* l2 = mergeSort(slow);
+        // return mergelist(l1,l2);
     }
 };
 
