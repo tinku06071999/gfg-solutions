@@ -7,27 +7,25 @@ using namespace std;
 // } Driver Code Ends
 //User function template for C++
 
-class Solution{  
-private:
-    bool solve(int idx,int sum , vector<int>arr,vector<vector<int>>&dp){
-        if(sum==0)return true;
-        if(idx==0)return arr[0]==sum;
-        if(dp[idx][sum]!=-1)return dp[idx][sum];
-        // not take
-        bool notTake = solve(idx-1,sum,arr,dp);
-         
-        bool take = false;
-        if(arr[idx]<=sum)
-        take = solve(idx-1,sum-arr[idx],arr,dp);
-        
-        return dp[idx][sum] = take||notTake;
-    }
+class Solution{   
 public:
+    bool solve(int idx, vector<int>&arr, int sum, vector<vector<int>>&dp){
+        if(sum==0)return true;
+        if(idx == 0)return arr[0] == sum;
+        
+        if(dp[idx][sum] != -1)return dp[idx][sum];
+        
+        int take = false;
+        if(arr[idx] <= sum) take = solve(idx-1, arr, sum - arr[idx],dp);
+        int not_take = solve(idx-1, arr, sum,dp);
+        
+        return dp[idx][sum] = take || not_take;
+    }
     bool isSubsetSum(vector<int>arr, int sum){
         // code here 
         int n = arr.size();
-        vector<vector<int>>dp(n,vector<int>(sum+1,-1));
-        return solve(n-1,sum,arr,dp);
+        vector<vector<int>>dp(n, vector<int>(sum+1, -1));
+        return solve(n-1, arr, sum,dp);
     }
 };
 
