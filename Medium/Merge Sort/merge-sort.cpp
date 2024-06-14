@@ -22,10 +22,10 @@ class Solution
     void merge(int arr[], int l, int mid, int r)
     {
          // Your code here
-         int temp[l+r];
+         int temp[r-l+1];
          int left = l;
          int right = mid+1;
-         int i =0;
+         int i=0;
          while(left <= mid && right <= r){
              if(arr[left] <= arr[right]){
                  temp[i++] = arr[left++];
@@ -33,15 +33,32 @@ class Solution
                  temp[i++] = arr[right++];
              }
          }
-         while(left <= mid){
-             temp[i++] = arr[left++];
+         while(left <= mid) temp[i++] = arr[left++];
+         while(right <= r) temp[i++] = arr[right++];
+         
+         for(int i=l; i<=r; i++){
+             arr[i] = temp[i-l];
          }
-         while(right <= r){
-             temp[i++] = arr[right++];
-         }
-         for(int i = l ;i<=r;i++){
-             arr[i] = temp[i - l];
-         }
+        
+        // while(left <= mid && right <= r){
+        //     if(arr[left] <= arr[right]){
+        //         left++;
+        //     }else{
+        //         int val = arr[right];
+        //         int idx = right;
+                
+        //         while(idx > left){
+        //             arr[idx] = arr[idx-1];
+        //             idx--;
+        //         }
+        //         arr[left] = val;
+        //         left++;
+        //         mid++;
+        //         right++;
+        //     }
+        // }
+        
+        
     }
     public:
     void mergeSort(int arr[], int l, int r)
