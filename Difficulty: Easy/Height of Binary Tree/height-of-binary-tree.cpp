@@ -102,9 +102,9 @@ class Solution{
     int height(struct Node* node){
         // code here 
         if(node == nullptr)return 0;
-        int left = 1 + height(node->left);
-        int right = 1 + height(node->right);
-        return max(left, right);
+        int left = height(node->left);
+        int right = height(node->right);
+        return max(left, right) + 1;
     }
 };
 
