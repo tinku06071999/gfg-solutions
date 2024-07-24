@@ -18,15 +18,10 @@ class Solution {
          
          for(int i=n-1;i>=0;i--){
              if(arr[i] >= maxi){
-                //  cout<<arr[i]<<" ";
+                
                  maxi = arr[i];
                  ans.push_back(arr[i]);
              }
-            //  else{
-            //     //  cout<<arr[i]<<" ";
-            //     //  maxi = max(maxi, ans[i]);
-            //     continue;
-            //  }
          }
          reverse(ans.begin(), ans.end());
          return ans;
